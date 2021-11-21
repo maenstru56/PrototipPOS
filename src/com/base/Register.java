@@ -2,6 +2,15 @@ package com.base;
 
 public class Register {
     private ProductCatalog catalog;
+
+    public Sale getCurrentSale() {
+        return currentSale;
+    }
+
+    public void setCurrentSale(Sale currentSale) {
+        this.currentSale = currentSale;
+    }
+
     private Sale currentSale;
 
     public Register(ProductCatalog catalog) {
@@ -13,9 +22,13 @@ public class Register {
     }
 
     public void enterItem(int id, int quantity) {
-        ProductDescription desc = catalog.getProductDescription(id);
+        if(catalog.getProductDescription(id) == null){
+            System.out.println("Item's id doesn't exit!");
+            return;
+        }
 
-        currentSale.makeLineItem( desc, quantity );
+        ProductDescription desc = catalog.getProductDescription(id);
+        currentSale.makeLineItem(desc, quantity);
     }
 
     public void makeNewSale() {

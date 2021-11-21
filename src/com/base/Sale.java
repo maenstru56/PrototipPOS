@@ -8,6 +8,15 @@ public class Sale {
     private List<SalesLineItem> lineItems = new ArrayList();
     private Date date = new Date();
     private boolean isComplete = false;
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
+    }
+
     private Payment payment;
 
     public double getBalance() {
